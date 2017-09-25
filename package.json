@@ -1,0 +1,19 @@
+{
+  "name": "moviestuff",
+  "version": "1.0.0",
+  "description": "movie fan app for training",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bgrossiord",
+  "license": "ISC",
+  "dependencies": {
+
+    "body-parser": "^1.18.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4"
+  }
+}
