@@ -11,9 +11,9 @@
   "author": "bgrossiord",
   "license": "ISC",
   "dependencies": {
-
     "body-parser": "^1.18.1",
     "ejs": "^2.5.7",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "multer": "^1.3.0"
   }
 }
