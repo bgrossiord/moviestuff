@@ -23,13 +23,22 @@
         const title = document.querySelector('#movietitle');
         const btnSearch = document.querySelector('#btnSearch');
         btnSearch.addEventListener('click',search);
-        let results = document.querySelector('#results');
+        let resultsDiv = document.querySelector('#results');
         function search() {
             const  query  =`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title.value}&language=FR`;
             axios.get(query)
                 .then(function(reponse){
                     console.log(reponse)
+                    displayResult(reponse.data.results)
                 });
+        }
+        function displayResult(results){
+            results.innerHTML='';
+            for (let result of results){
+                let movieDiv = document.createElement('div');
+                movieDiv.innerHTML = result.title;
+                resultsDiv.appendChild(movieDiv);
+            }
         }
     </script>
   </body>

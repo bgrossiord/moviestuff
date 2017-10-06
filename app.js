@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const mutler = require('multer');
 const upload = mutler();
 
+const jwt = require('jsonwebtoken');
+
+
 //views for ejs
 app.set('views','./views');
 //view angine
@@ -85,4 +88,25 @@ app.get('/movie-detail',(req,res)=>{
 
 app.get('/movie-search',(req,res)=>{
   res.render('movie-search');  
+});
+
+app.get('/login',(req,res)=>{
+  res.render('login',{title:'connexion'});  
+});
+
+
+const fakeUser ={email:'testuser@mail.com',password:'qsd'};
+
+const secret ='sAEeGEGrokre54ae00agpltmG684654gf01Ggq6ae4Zrg654Ggqd544fg6AarG40g5g4qd5Zg44qeG3r5g4eEa454EFF6501651f32Gssf166zFe5f165Zq00df13sA0ZZEd5fz6ef165dfh6fdh4';
+app.post('/login',urlencoderParser,(req,res) => {
+  if(!req.body){
+    res.sendStatus(500);
+  }else{
+    if (fakeUser.email === req.body.email && fakeUser.password === req.body.password){
+      const myToken = jwt.sign({iss:'moviestuff',user:'Sam', scope:'moderator'},secret);
+      res.json(myToken);
+    }else{
+      res.status(401);
+    }
+  }
 });
